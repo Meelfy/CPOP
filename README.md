@@ -27,19 +27,22 @@ This section preprocesses the raw data. You can see the source code in the `1-Pr
 - Area extraction
 - Fineness conversion
 
-#### Precipitation
-
-
-#### SST
-#### SLA
-#### WIND
-
 ### SPI
+
+[TODO]
+
 ### EOF
+
+[TODO]
+
 ### Clustering
+
 ### TDNN
+
 ### NARX+TDNN
+
 ### Deep Learning
+
 
 ## Staged Results and Visualization
 
