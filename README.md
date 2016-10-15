@@ -58,10 +58,17 @@ Hierarchical clustering (also called hierarchical cluster analysis or HCA) is a 
 </div>
 But we still need to choose a height to determine the original data of a division.
 
+#### Silhouette value
+We also try to use **Silhouette Value** to determine the optimal number of clusters. 
+<div align="center">
+    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/Silhouette_value_2~100.png" width="630">
+</div>
+With the increase of the number of clusters, the overall Silhouette Value also gradually increased, but the rate of increase gradually slowed down. Therefore, the significance of Silhouette Value in selecting the number of clusters is not significant.
+
 #### The final selected clustering method
 Considering the actual precipitation situation and clustering algorithm, we finally selected the **k-means algorithm** to cluster the land precipitation in China. If the number of clusters is too large, the effect of ocean on land precipitation will be dispersed, so we choose 9 as the number of clusters. Because the algorithm is stochastic, the algorithm is no longer running. Directly using the previously processed results.
 <div align="center">
-    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/K-means_Clustering_Results.png" width="500">
+    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/K-means_Clustering_Results.png" width="630">
 </div>
 
 ### TDNN
