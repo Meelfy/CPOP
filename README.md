@@ -38,7 +38,11 @@ This section preprocesses the raw data. You can see the source code in the `1-Pr
 ### Clustering
 
 #### Akaike information criterion
-AIC(Akaike information criterion) is a measure of the relative quality of statistical models for a given set of data(From [wiki][AIC_wiki]. This is an effective means to determine the optimal number of clusters. You can click on this [link][PREC] for more information.
+AIC(Akaike information criterion) is a measure of the relative quality of statistical models for a given set of data(From [wiki][AIC_wiki]). This is an effective means to determine the optimal number of clusters. Using this algorithm for China's land precipitation data, the results are as follows
+<img src="https://github.com/MajorChina/CPOOP/blob/master/img/Clusters_AIC_200_Optimal_23.png">
+
+We can see that. As the number of clusters increases, AIC value decreases first and then increases. When AIC value is minimum, the number of clusters is 23.
+
 ### TDNN
 
 ### NARX+TDNN
@@ -56,3 +60,4 @@ AIC(Akaike information criterion) is a measure of the relative quality of statis
 [OISST]:http://www.esrl.noaa.gov/psd/
 [Wind]:http://www.remss.com/measurements/ccmp
 [AIC_wiki]:https://en.wikipedia.org/wiki/Akaike_information_criterion
+[Clusters_AIC]: data/Clusters_AIC_200_Optimal_23.png
