@@ -65,8 +65,6 @@ But we still need to choose a height to determine the original data of a divisio
 ### Deep Learning
 
 
-## Staged Results and Visualization
-
 ## Reference
 
 [1] Akaike H. Information Theory and an Extension of the Maximum Likelihood Principle[J]. Inter.symp.on Information Theory, 1973, 1:610-624.
