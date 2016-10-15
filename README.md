@@ -2,7 +2,7 @@
 
 Full name **Temporal and Spatial Information Mining and Application of Chinese Precipitation and Ocean Processes Based on Remote Sensing Big Data**
 
-CPOOP(Chinese Precipitation And Oceanic Processes) is a scientific research project that analyzes the spatial correlation  between Chinese precipitation and the Pacific Ocean and the Indian Ocean. This project focuses on the impact of ocean processes on precipitation in China.
+CPOP(Chinese Precipitation and Oceanic Processes) is a scientific research project that analyzes the spatial correlation  between Chinese precipitation and the Pacific Ocean and the Indian Ocean. This project focuses on the impact of ocean processes on precipitation in China.
 
 ## Research Background
 
@@ -28,7 +28,7 @@ This section preprocesses the raw data. You can see the source code in the `1-Pr
 
 We extract the ocean range is 100°E - 290°E & 50°N - 50°S. This range covers the entire Pacific Ocean. For different data sets we use different mask, which are provided along with the raw data. The marine area is shown below
 <div align="center">
-    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/Ocean_Range.png" width="500">
+    <img src="https://github.com/MajorChina/CPOP/blob/master/img/Ocean_Range.png" width="500">
 </div>
 
 #### Fineness conversion
@@ -47,28 +47,28 @@ Calculate the Standardized Precipitation Index.
 
 AIC(Akaike information criterion) is a measure of the relative quality of statistical models for a given set of data(From [wiki][AIC_wiki]). This is an effective means to determine the optimal number of clusters. You can read the [original paper][AIC article] for more information. Using this algorithm for China's land precipitation data, the results are as follows
 <div align="center">
-    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/Clusters_AIC_200_Optimal_23.png" width="500">
+    <img src="https://github.com/MajorChina/CPOP/blob/master/img/Clusters_AIC_200_Optimal_23.png" width="500">
 </div>
 We can see that. As the number of clusters increases, AIC value decreases first and then increases. When AIC value is minimum, the number of clusters is 23.
 
 #### Hierarchical Clustering
 Hierarchical clustering (also called hierarchical cluster analysis or HCA) is a method of cluster analysis which seeks to build a hierarchy of clusters(From [wiki][Hierarchical Clustering wiki]). The biggest advantage of this clustering algorithm is that it does not need to set the number of clusters at the beginning. The following figure is the result of clustering using this algorithm.
 <div align="center">
-    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/Clusters_Hierarchical_Clustering.png" width="500">
+    <img src="https://github.com/MajorChina/CPOP/blob/master/img/Clusters_Hierarchical_Clustering.png" width="500">
 </div>
 But we still need to choose a height to determine the original data of a division.
 
 #### Silhouette value
 We also try to use **Silhouette Value** to determine the optimal number of clusters. 
 <div align="center">
-    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/Silhouette_value_2~100.png" width="500">
+    <img src="https://github.com/MajorChina/CPOP/blob/master/img/Silhouette_value_2~100.png" width="500">
 </div>
 With the increase of the number of clusters, the overall Silhouette Value also gradually increased, but the rate of increase gradually slowed down. Therefore, the significance of Silhouette Value in selecting the number of clusters is not significant.
 
 #### The final selected clustering method
 Considering the actual precipitation situation and clustering algorithm, we finally selected the **k-means algorithm** to cluster the land precipitation in China. If the number of clusters is too large, the effect of ocean on land precipitation will be dispersed, so we choose 9 as the number of clusters. Because the algorithm is stochastic, the algorithm is no longer running. Directly using the previously processed results.
 <div align="center">
-    <img src="https://github.com/MajorChina/CPOOP/blob/master/img/K-means_Clustering_Results.png" width="670">
+    <img src="https://github.com/MajorChina/CPOP/blob/master/img/K-means_Clustering_Results.png" width="670">
 </div>
 
 ### TDNN
