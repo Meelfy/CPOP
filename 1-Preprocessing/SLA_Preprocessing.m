@@ -29,7 +29,7 @@ function SLA_Preprocseeing()
         SLA(i,:) = reshape(one_SLA, 1, row_num * col_num);
 
         % Displays the processing progress
-        disp(double(i)/file_num*100);
+        % disp(double(i)/file_num*100);
     end
     SLA(isnan(SLA)) = -9999;
     dlmwrite('data\SLA_199301-201508.dat', SLA, 'delimiter', ' ');
