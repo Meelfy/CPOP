@@ -1,7 +1,7 @@
+function SST_Preprocessing()
 % Reads the data and extracts the region of interest
 % time tange 198112 - 201509
 % space range 100°E - 290°E  & 50°N - 50°S
-function SST_Preprocessing()
     clear('all');
     clc;
     month_num = 406;
@@ -27,5 +27,15 @@ function SST_Preprocessing()
         % space range 100°E - 290°E  & 50°N - 50°S
         SST(i,:) = reshape(raw_SST{i}(40:140,100:290), 1, row_num * col_num);
     end
+
+    % Remove -9999
+    mask = (SST(1,:)==-9999);
+    for i = 2:month_num
+        mask = mask| (SST(i,:)==-9999);
+    end
+    mask = ~mask;
+    SST =  SST(:,mask);
+
+    dlmwrite('data\SST_198112-201509_mask.dat', mask, 'delimiter', ' ');
     dlmwrite('data\SST_198112-201509.dat', SST, 'delimiter', ' ');
 end

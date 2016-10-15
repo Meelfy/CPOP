@@ -1,10 +1,9 @@
+function SLA_Preprocseeing()
 % Reads the data and extracts the region of interest
 % time tange 199301-201508
 % space range 100°E - 290°E  & 50°N - 50°S
-function SLA_Preprocseeing()
     clear all;
     clc;
-    
     file_path = 'E:\Datasets\AVISO月平均SLA(四分之一度)\monthly_mean\';
     file_name = dir([file_path, '*.nc']);
     file_num  = size(file_name, 1);
@@ -32,5 +31,15 @@ function SLA_Preprocseeing()
         % disp(double(i)/file_num*100);
     end
     SLA(isnan(SLA)) = -9999;
+
+    % Remove -9999
+    mask = (SLA(1,:)==-9999);
+    for i = 2:file_num
+        mask = mask| (SLA(i,:)==-9999);
+    end
+    mask = ~mask;
+    SLA =  SLA(:,mask);
+
+    dlmwrite('data\SLA_199301-201508_mask.dat', mask, 'delimiter', ' ');
     dlmwrite('data\SLA_199301-201508.dat', SLA, 'delimiter', ' ');
 end
