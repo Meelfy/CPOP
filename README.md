@@ -8,7 +8,7 @@ CPOOP(Chinese Precipitation And Oceanic Processes) is a scientific research proj
 
 ## Data Description
 
-We have used four different data set:
+We have used four different data sets:
 
 1. **Monthly precipitation in China**(中国地面降水月值) You can click on this [link][PREC] for more information.
 
@@ -27,13 +27,16 @@ This section preprocesses the raw data. You can see the source code in the `1-Pr
 - Area extraction
 - Fineness conversion
 
+We extract the ocean range is 100°E - 290°E & 50°N - 50°S. This range covers the entire Pacific Ocean. For different data sets we use different mask, which are provided along with the raw data. The marine area is shown below
+<img src="https://github.com/MajorChina/CPOOP/blob/master/img/Ocean_Range.png">
+
+
+
 ### SPI
 
-[TODO]
+Calculate the Standardized Precipitation Index.
 
 ### EOF
-
-[TODO]
 
 ### Clustering
 
@@ -60,4 +63,3 @@ We can see that. As the number of clusters increases, AIC value decreases first 
 [OISST]:http://www.esrl.noaa.gov/psd/
 [Wind]:http://www.remss.com/measurements/ccmp
 [AIC_wiki]:https://en.wikipedia.org/wiki/Akaike_information_criterion
-[Clusters_AIC]: data/Clusters_AIC_200_Optimal_23.png
