@@ -35,7 +35,8 @@ function SST_Preprocessing()
     end
     mask = ~mask;
     SST =  SST(:,mask);
-
+    
+    % When the mask is equal to 1 that there is data
     dlmwrite('data\SST_198112-201509_mask.dat', mask, 'delimiter', ' ');
     dlmwrite('data\SST_198112-201509.dat', SST, 'delimiter', ' ');
 end
