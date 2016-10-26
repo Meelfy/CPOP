@@ -1,4 +1,4 @@
-function EOF_SST()
+function EOF_SST = EOF_SST()
     SST = dlmread('data/SST_198112-201509.dat');
     valuenum = size(SST, 2);
     n = size(SST, 1);
@@ -50,9 +50,12 @@ function EOF_SST()
         if(lambda(i) - lambda(i+1) >= err)
             continue;
         else
-            n_eof = i;   %此程序n_eof = 3，说明前3个模态都是有效的
+            n_eof = i;   % 此程序n_eof = 3，说明前3个模态都是有效的
             break;
         end
     end
     clear err i 
+
+    % Each row represents a time series
+    dlmwrite('data/EOF_SST_198112-201509.dat', PC', 'delimiter', ' ');
 end
