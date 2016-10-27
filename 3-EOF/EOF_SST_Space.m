@@ -38,7 +38,7 @@ function EOF_SST_Space = EOF_SST_Space()
         plot(1:m, EOF_SST_Space(:, i));
         axis([1 m min(EOF_SST_Space(:, i)) max(EOF_SST_Space(:, i))])
         set(gca,'xtick',1:60:m,'xticklabel',1981:5:2016);
-        title(['SST Principal component ', num2str(i)])
+        title(['SST Principal component ', num2str(i)], 'fontsize', 16)
         xlabel('Time serises - Year');        
         set(gcf, 'position', [0 0 1200 800]);
         set(gcf, 'color', 'w')
