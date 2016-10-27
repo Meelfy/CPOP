@@ -31,6 +31,7 @@ function EOF_SST_Space = EOF_SST_Space()
     dlmwrite('data/EOF_SST_Space_0.99999.dat', EOF_SST_Space, 'delimiter', ' ');
     dlmwrite('data/EOF_SST_Spatial_mode_1-10.dat', U(:, 1:10), 'delimiter', ' ');
 
+    % View the first 4 features after dimension reduction
     numOfPic = 4;
     for i = 1:numOfPic
         subplot(sqrt(numOfPic), sqrt(numOfPic), i);
@@ -42,5 +43,40 @@ function EOF_SST_Space = EOF_SST_Space()
         set(gcf, 'position', [0 0 1200 800]);
         set(gcf, 'color', 'w')
     end
-    print(gcf,'-dpng','img/SST_Principal_component_1-4')
+    print(gcf,'-dpng','img/SST_Principal_component_1-4');
+
+
+
+    % View the first 4 spatial modes after dimension reduction
+    numOfPic = 4;
+    for i = 1:numOfPic
+        subplot(sqrt(numOfPic), sqrt(numOfPic), i);
+        SST_matrix = SST_vec_to_matrix(U(:, i));
+        lon = 100:1:290;
+        lat = -50:1:50;
+        m_proj('Equidistant Cylindrical',...
+               'lat', [-50 50],...
+               'lon', [100 290]);
+        [C,h] = m_contourf(lon,...
+                           lat,...
+                           flipud(SST_matrix),...
+                           30,...
+                           'linestyle',...
+                           'none');
+        m_coast('patch', [.99 .99 .99]);
+        m_coast('color', 'k');
+        title(['SST Spatial modes' num2str(i)],...
+              'fontsize', 16); 
+        m_grid('linestyle','none',...
+               'tickdir','out',...
+               'linewidth',1.5,...
+               'fontsize',10,...
+               'fontname','Times');
+        colorbar
+
+        set(gcf, 'position', [0 0 1200 800]);
+        set(gcf, 'color', 'w')
+    end
+    print(gcf,'-dpng','img/SST_spatial_modes_1-4');
+
 end
