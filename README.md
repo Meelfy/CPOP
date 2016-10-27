@@ -41,6 +41,13 @@ Calculate the Standardized Precipitation Index.
 
 ### EOF
 
+#### SST - Principal components analysis
+EOF (or PCA) is used to reduce the ocean data's dimensions. Because of the high correlation between adjacent locations of oceanic data, only the most significant changes need to be extracted to characterize the impact on land. For SST data 99.999% of variance is retained. This means that our data dimension extends from the more than 10,000 dimensions to 402 dimensions.
+<div align="center">
+    <img src="https://github.com/MajorChina/CPOP/blob/master/img/SST_Principal_component_1-4.png" width="800">
+</div>
+
+
 ### Clustering
 
 #### Akaike information criterion
