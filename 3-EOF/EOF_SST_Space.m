@@ -29,4 +29,18 @@ function EOF_SST_Space = EOF_SST_Space()
     EOF_SST_Space = X * Ureduce;
 
     dlmwrite('data/EOF_SST_Space_0.99999.dat', EOF_SST_Space, 'delimiter', ' ');
+    dlmwrite('data/EOF_SST_Spatial_mode_1-10.dat', U(:, 1:10), 'delimiter', ' ');
+
+    numOfPic = 4;
+    for i = 1:numOfPic
+        subplot(sqrt(numOfPic), sqrt(numOfPic), i);
+        plot(1:m, EOF_SST_Space(:, i));
+        axis([1 m min(EOF_SST_Space(:, i)) max(EOF_SST_Space(:, i))])
+        set(gca,'xtick',1:60:m,'xticklabel',1981:5:2016);
+        title(['SST Principal component ', num2str(i)])
+        xlabel('Time serises - Year');        
+        set(gcf, 'position', [0 0 1200 800]);
+        set(gcf, 'color', 'w')
+    end
+    print(gcf,'-dpng','img/SST_Principal_component_1-4')
 end
