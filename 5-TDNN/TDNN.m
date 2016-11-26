@@ -105,6 +105,6 @@ function Time_Delay_Neural_Network_train
 
 
 
-    % prediction
-    predicte = sim(net, predicte_input);
-    e = gsubtract(t,y);
+    % % prediction
+    % predicte = sim(net, predicte_input);
+    % e = gsubtract(t,y);

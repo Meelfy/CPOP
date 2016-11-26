@@ -31,6 +31,7 @@ function dalily_Precipitation_Preprocessing()
     dlmwrite('data\daily_Prec_19800101-20140228.dat', PREC, 'delimiter', ' ');
 end
 
+% 验证下载的数据是否缺少日期
 % % 截取时间段
 % for i =1 :1965
 %     day(i,:) =  str2num(file_name(i).name(end-11:end-4));
