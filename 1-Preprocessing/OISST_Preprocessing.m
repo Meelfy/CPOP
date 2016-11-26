@@ -26,3 +26,11 @@ function OISST_Preprocessing()
 % lat=gds.La1:-gds.Dj:gds.La2;
 % ThisUgrd=reshape(grib_struct(1).fltarray,gds.Ni,gds.Nj)';
 % pcolor(lon,lat,ThisUgrd)
+
+% 截取时间段
+for i =1 :1965
+    day(i,:) =  str2num(file_name(i).name(end-11:end-4));
+end
+% total_day 使用excel生成完整的时间
+% 去两者差集
+y = setdiff(total_day, day, 'rows');
