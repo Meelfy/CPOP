@@ -1,10 +1,13 @@
 function Time_Delay_Neural_Network_train
 % Solve an Input-Output Time-Series Problem with a Time Delay Neural Network
     
-    % read data
-    zones_Prec = get_zones_Prec();
-    EOF_SST = dlmread('data/SST_198112-201509.dat');
+    % % read data
+    % zones_Prec = get_zones_Prec();
+    % EOF_SST = dlmread('data/SST_198112-201509.dat');
 
+    zones_Prec = get_zones_Prec_weekly();
+    OISST = dlmread('data/OISST_19811101-20161116.dat');
+    
     % Intercept SST to make them time consistent
     EOF_SST = EOF_SST(1:end - 5, :);
 

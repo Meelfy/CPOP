@@ -12,11 +12,13 @@ We have used four different data sets:
 
 1. **Monthly precipitation in China**(中国地面降水月值) You can click on this [link][PREC] for more information.
 
-2. **SST**(Sea surface temperature). NOAA_OI_SST_V2 data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at [here][OISST].
+2. **SST**(Sea surface temperature). NOAA_OI_SST_V2 data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at [here][OISST]. OISST 的周SST数据在 1989-12-31 之后直接变为 1990-01-03 不符合一周的定义。所以在处理降水数据时也与之匹配的进行，把前一周降水平均值作为 1990-01-03 的数据。
 
 3. **Wind** CCMP Version-2.0 vector wind analyses are produced by Remote Sensing Systems. Data are available at [here][Wind].
 
 4. **SLA**  [TODO]AVISO
+
+After all of our data is reshaped for the square, (0,0) is in the N-W direction of the map.
 
 
 

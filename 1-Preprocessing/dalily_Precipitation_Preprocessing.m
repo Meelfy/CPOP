@@ -1,7 +1,7 @@
 function dalily_Precipitation_Preprocessing()
 % This function deals with the raw data of precipitation
 % Mainly to achieve a certain period of time within the data extraction
-% Time span 19800101 - 20140228
+% Time span 19800101 - 20140228  / 12478 days
     clear all;clc;
     
     file_path = 'E:\Datasets\China_Precipitation\daily_SURF_CLI_CHN_PRE_MON_GRID_0.5-\';
@@ -33,8 +33,8 @@ end
 
 % 验证下载的数据是否缺少日期
 % % 截取时间段
-% for i =1 :1965
-%     day(i,:) =  str2num(file_name(i).name(end-11:end-4));
+% for i =1 :file_num
+%     week(i,:) =  str2num(file_name(i).name(end-11:end-4));
 % end
 % % total_day 使用excel生成完整的时间
 % % 取两者差集

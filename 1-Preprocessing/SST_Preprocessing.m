@@ -1,7 +1,7 @@
 function SST_Preprocessing()
-% Reads the data and extracts the region of interest
-% time tange 198112 - 201509
-% space range 100°E - 290°E  & 50°N - 50°S
+    % Reads the data and extracts the region of interest
+    % time tange 198112 - 201509
+    % space range 100°E - 290°E  & 50°N - 50°S
     clear('all');
     clc;
     month_num = 406;
