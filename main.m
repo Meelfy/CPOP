@@ -9,6 +9,7 @@ OISST = OISST(1:size(zones_Prec, 1), :);
 % result = tdnn_train(X, Y, delay_times, hiddenLayerSize)
 result = [];
 for delay_times = 1:20
-    result_one = tdnn_train(OISST, zones_Prec, 6, 30)
+    result_one = tdnn_train(OISST, zones_Prec, delay_times, 30)
     result = [result; result_one];
 end
+dlmwrite('result_delay_times_1-20.dat', result, 'delimiter', '\t');
