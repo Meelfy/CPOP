@@ -1,6 +1,6 @@
 function Silhouette_value()
     clear; clc;
-    PREC = dlmread('data\Prec_198112-201504.dat')';
+    PREC = dlmread('data/Prec_198112-201504.dat')';
     for k = 2:100
         [Idx_PREC] = kmeans(PREC, k, 'Distance', 'correlation');
         silh = silhouette(PREC, Idx_PREC, 'correlation');

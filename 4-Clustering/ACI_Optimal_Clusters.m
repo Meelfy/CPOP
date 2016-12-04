@@ -1,6 +1,6 @@
 function ACI_Optimal_Clusters()
     K_max = 200;
-    PRCP = dlmread('data\Prec_198112-201504.dat')';
+    PRCP = dlmread('data/Prec_198112-201504.dat')';
 
     disp('This may take some time...');
 

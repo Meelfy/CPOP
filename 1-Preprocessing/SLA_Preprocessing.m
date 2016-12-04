@@ -4,7 +4,7 @@ function SLA_Preprocseeing()
 % space range 100°E - 290°E  & 50°N - 50°S
     clear all;
     clc;
-    file_path = 'E:\Datasets\AVISO月平均SLA(四分之一度)\monthly_mean\';
+    file_path = 'E:/Datasets/AVISO月平均SLA(四分之一度)/monthly_mean/';
     file_name = dir([file_path, '*.nc']);
     file_num  = size(file_name, 1);
     one_SLA   = zeros(101, 191);
@@ -40,6 +40,6 @@ function SLA_Preprocseeing()
     mask = ~mask;
     SLA =  SLA(:,mask);
 
-    dlmwrite('data\SLA_199301-201508_mask.dat', mask, 'delimiter', ' ');
-    dlmwrite('data\SLA_199301-201508.dat', SLA, 'delimiter', ' ');
+    dlmwrite('data/SLA_199301-201508_mask.dat', mask, 'delimiter', ' ');
+    dlmwrite('data/SLA_199301-201508.dat', SLA, 'delimiter', ' ');
 end

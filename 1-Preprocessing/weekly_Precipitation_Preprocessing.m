@@ -25,4 +25,4 @@ function weekly_Precipitation_Preprocessing()
         Prec_weekly = [Prec_weekly; mean(Prec_daily(i - 6:i, :))];
     end  
 
-    dlmwrite('data\weekly_Prec_19811101-19891231_19900103-20140226.dat', Prec_weekly, 'delimiter', ' ');
+    dlmwrite('data/weekly_Prec_19811101-19891231_19900103-20140226.dat', Prec_weekly, 'delimiter', ' ');

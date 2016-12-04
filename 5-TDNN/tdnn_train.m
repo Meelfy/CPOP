@@ -1,23 +1,19 @@
-function Time_Delay_Neural_Network_train
+function result = tdnn_train(X_input, Y_input, delay_times, hiddenLayerSize)
 % Solve an Input-Output Time-Series Problem with a Time Delay Neural Network
     
-    % % read data
-    % zones_Prec = get_zones_Prec();
-    % EOF_SST = dlmread('data/SST_198112-201509.dat');
-    clc; clear all; close all;
-    zones_Prec = get_zones_Prec_weekly();
-    OISST = dlmread('data/OISST_19811101-20161116.dat');
-    
-    % Intercept SST to make them time consistent
-    OISST = OISST(1:size(zones_Prec, 1), :);
+
+    result = zeros(1,20);
+    result(2) = hiddenLayerSize;
+    result(3) = delay_times;
+
 
     % Standardize the input and output data
-    zones_Prec = normalize_By_Col(zones_Prec);
-    OISST = normalize_By_Col(OISST);
+    X_input = normalize_By_Col(X_input);
+    Y_input = normalize_By_Col(Y_input);
 
 
     %**********************TDNN start**********************
-    delay_weeks = 12;
+    delay_weeks = delay_times;
     % modify the delay date
     % Uses a memory-saving algorithm to calculate the 
     % error when the algorithm conjugate gradient
@@ -29,12 +25,12 @@ function Time_Delay_Neural_Network_train
     % This script assumes these variables are defined:
     %
     %   EOF_SST - input time series.
-    %   zones_Prec - target time series.
+    %   X - target time series.
 
-    X = tonndata(OISST,false,false);
+    X = tonndata(X_input,false,false);
     % EOF_SST = fromnndata(X,true,false,false);
     % Reversible
-    T = tonndata(zones_Prec,false,false);
+    T = tonndata(Y_input,false,false);
 
     % Choose a Training Function
     % For a list of all training functions type: help nntrain
@@ -46,8 +42,8 @@ function Time_Delay_Neural_Network_train
 
     % Create a Time Delay Network
     inputDelays = 1:delay_weeks;
-    hiddenLayerSize = 30;
-    net = timedelaynet(inputDelays,hiddenLayerSize,hiddenLayerSize,trainFcn);
+    hiddenLayerSize = hiddenLayerSize;
+    net = timedelaynet(inputDelays,hiddenLayerSize,trainFcn);
 
     % Choose Input and Output Pre/Post-Processing Functions
     % For a list of all processing functions type: help nnprocess
@@ -95,17 +91,49 @@ function Time_Delay_Neural_Network_train
     % Test the Network
     y = net(x,xi,ai); % 输出结果
     e = gsubtract(t,y);% 直接作差
-    performance = perform(net,t,y)
+    performance = perform(net,t,y);
+    result(7) = performance;
 
     % Recalculate Training, Validation and Test Performance
     trainTargets = gmultiply(t,tr.trainMask);
     valTargets = gmultiply(t,tr.valMask);
     testTargets = gmultiply(t,tr.testMask);
-    trainPerformance = perform(net,trainTargets,y)
-    valPerformance = perform(net,valTargets,y)
-    testPerformance = perform(net,testTargets,y)
+    trainPerformance = perform(net,trainTargets,y);
+    result(4) = trainPerformance;
+    valPerformance = perform(net,valTargets,y);
+    result(5) = valPerformance;
+    testPerformance = perform(net,testTargets,y);
+    result(6) = testPerformance;
 
 
+
+    %***************相关系数图片***************%
+    i1 = tr.trainInd;
+    t1 = t(:,i1);
+    y1 = y(:,i1);
+    result(8) = corr2([t1{:}],[y1{:}]);
+
+    i2 = tr.valInd;
+    t2 = t(:,i2);
+    y2 = y(:,i2);
+    result(9) = corr2([t2{:}],[y2{:}]);
+
+    i3 = tr.testInd;
+    t3 = t(:,i3);
+    y3 = y(:,i3);
+    result(10) = corr2([t3{:}],[y3{:}]);
+
+    t4 = [t1 t2 t3];
+    y4 = [y1 y2 y3];
+    result(11) = corr2([t4{:}],[y4{:}]);
+    % print(gcf,'-dpng',['img/result_', num2str(result(2)), '_', num2str(result(3))]);
+    clear i1 t1 y1 i2 t2 y2 i3 t3 y3 t4 y4;
+    %***************相关系数图片***************%
+
+
+    for j = 1:length(e)
+        result(12:20) = result(12:20) + abs(e{j}(1:9,1))';
+    end
 
     % % prediction
     % predicte = sim(net, predicte_input);

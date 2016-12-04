@@ -13,8 +13,8 @@ function SST_Preprocessing()
         raw_SST{i} = zeros(180, 360);
     end
     % read SST and mask
-    csv_SST  = dlmread('E:\Datasets\SST\OISST\sst.csv');
-    mask_SST = dlmread('E:\Datasets\SST\OISST\mask.csv');
+    csv_SST  = dlmread('E:/Datasets/SST/OISST/sst.csv');
+    mask_SST = dlmread('E:/Datasets/SST/OISST/mask.csv');
 
     % Dlmread automatically ignores blank lines
     % So it is 180 instead of 181
@@ -37,6 +37,6 @@ function SST_Preprocessing()
     SST =  SST(:,mask);
     
     % When the mask is equal to 1 that there is data
-    dlmwrite('data\SST_198112-201509_mask.dat', mask, 'delimiter', ' ');
-    dlmwrite('data\SST_198112-201509.dat', SST, 'delimiter', ' ');
+    dlmwrite('data/SST_198112-201509_mask.dat', mask, 'delimiter', ' ');
+    dlmwrite('data/SST_198112-201509.dat', SST, 'delimiter', ' ');
 end

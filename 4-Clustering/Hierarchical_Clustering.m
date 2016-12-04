@@ -1,6 +1,6 @@
 function Hierarchical_Clustering()
     clear all; clc;
-    PREC = dlmread('data\Prec_198112-201504.dat')';
+    PREC = dlmread('data/Prec_198112-201504.dat')';
     eucD = pdist(PREC, 'correlation');
     clustTreeEuc = linkage(eucD, 'average');
     cophenet(clustTreeEuc, eucD);

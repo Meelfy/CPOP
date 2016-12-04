@@ -13,7 +13,7 @@ function OISST_Preprocessing()
     
     clear all;
     clc;
-    file_path = 'E:\Datasets\SST\OISST\daily\GRIB\';
+    file_path = 'E:/Datasets/SST/OISST/daily/GRIB/';
     file_name = dir([file_path, '*.grb']);
     file_num  = size(file_name, 1);
 
@@ -36,12 +36,12 @@ function OISST_Preprocessing()
         OISST(i, :) = reshape(grid_SST, 1, 18400);
     end
 
-    dlmwrite('data\OISST_19811101-20161116.dat', OISST, 'delimiter', ' ');
+    dlmwrite('data/OISST_19811101-20161116.dat', OISST, 'delimiter', ' ');
 
 
 % clear all;
 % clc;
-% file_path = 'E:\Datasets\SST\OISST\daily\GRIB\';
+% file_path = 'E:/Datasets/SST/OISST/daily/GRIB/';
 % file_name = dir([file_path, '*.grb']);
 % file_num  = size(file_name, 1);
 % % 验证下载的数据是否缺少日期
@@ -67,7 +67,7 @@ function OISST_Preprocessing()
 %     % Time span 19811101 - 20161116 weekly
 %     clear all;
 %     clc;
-%     file_path = 'E:\Datasets\SST\OISST\daily\GRIB\';
+%     file_path = 'E:/Datasets/SST/OISST/daily/GRIB/';
 %     file_name = dir([file_path, '*.grb']);
 %     file_num  = size(file_name, 1);
 
@@ -81,4 +81,4 @@ function OISST_Preprocessing()
 %         OISST(i, :) = oneRow_SST;
 %     end
 
-%     dlmwrite('data\OISST_19811101-20161116.dat', OISST, 'delimiter', ' ');
+%     dlmwrite('data/OISST_19811101-20161116.dat', OISST, 'delimiter', ' ');

@@ -8,7 +8,7 @@ function zones_Prec = get_zones_Prec_weekly(time_start, time_end)
         time_end   = 1688;
     end
     Prec_zones_9_manually = dlmread('data/Prec_zones_9_manually.dat');
-    Prec = dlmread('data\weekly_Prec_19811101-19891231_19900103-20140226.dat');
+    Prec = dlmread('data/weekly_Prec_19811101-19891231_19900103-20140226.dat');
 
     % Apply for memory
     for k = time_start:time_end
