@@ -17,7 +17,7 @@ function OISST_Preprocessing()
     file_name = dir([file_path, '*.grb']);
     file_num  = size(file_name, 1);
 
-    OISST = zeros(file_num, 18400);
+    OISST = zeros(file_num, 18400);% 80 * 230
 
 
     for i = 1:file_num

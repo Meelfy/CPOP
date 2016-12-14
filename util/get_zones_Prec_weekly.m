@@ -1,7 +1,7 @@
 function zones_Prec = get_zones_Prec_weekly(time_start, time_end)
 % This function returns the raw data for the precipitation without null values
 % The data have been averaged according to the clustering regions
-% Data are given in terms of months with a time span of 19800101-20140228
+% Data are given in terms of months with a time span of 19811101-20140228
 % a total of 12478 days 
     if nargin == 0
         time_start = 1;
