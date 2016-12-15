@@ -1,6 +1,5 @@
-/*.gitignore
+/.gitignore
 /data/OISST_19811101-20161116.dat
 /data/daily_Prec_19800101-20140228.dat
 /data/uwnd_WIND_CCMP_merge_OISST_weekly.dat
 /data/vwnd_WIND_CCMP_merge_OISST_weekly.dat
-/data/OISST_19811101-20161116.dat
