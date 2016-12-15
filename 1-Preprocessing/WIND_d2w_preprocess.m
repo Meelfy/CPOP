@@ -82,8 +82,8 @@ function WIND_d2w_preprocess()
         % 一共有几天， 一般为7
         batch_num = length(file_name(idx));
         
-        uwnd_average = zeros(80, 230);
-        vwnd_average = zeros(80, 230);
+        uwnd_average = zeros(80, 260);
+        vwnd_average = zeros(80, 260);
 
         for j = 1:batch_num
             uwnd = ncread([file_name(idx(j)).dir, file_name(idx(j)).name], 'uwnd');
@@ -95,9 +95,9 @@ function WIND_d2w_preprocess()
             vwnd = mean(vwnd, 3);
 
             % x ~ 90 - 50(50°N) : 90 + 29(30°S)
-            % y ~ 31(30°E)      : (180 - 30) + (180 - 70) (70°W)
-            uwnd = uwnd(longitude>30 & longitude <= 260, latitude > -30 & latitude <= 50);
-            vwnd = vwnd(longitude>30 & longitude <= 260, latitude > -30 & latitude <= 50);
+            % y ~ 31(30°E)      : 180 + (180 - 70) (70°W) 290°E
+            uwnd = uwnd(longitude>30 & longitude <= 290, latitude > -30 & latitude <= 50);
+            vwnd = vwnd(longitude>30 & longitude <= 290, latitude > -30 & latitude <= 50);
             
             %转置原矩阵使符合正常角度
             uwnd = uwnd';
@@ -121,8 +121,8 @@ function WIND_d2w_preprocess()
             vwnd_average = vwnd_average + vwnd / batch_num;
         end
 
-        uwnd_all = [uwnd_all; reshape(uwnd_average, 1, 80 * 230)];
-        vwnd_all = [vwnd_all; reshape(vwnd_average, 1, 80 * 230)];
+        uwnd_all = [uwnd_all; reshape(uwnd_average, 1, 80 * 260)];
+        vwnd_all = [vwnd_all; reshape(vwnd_average, 1, 80 * 260)];
 
 
         disp(['Process ' num2str(i) ' / ' num2str(size(week_OISST, 1))]);

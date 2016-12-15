@@ -17,7 +17,7 @@ function OISST_Preprocessing()
     file_name = dir([file_path, '*.grb']);
     file_num  = size(file_name, 1);
 
-    OISST = zeros(file_num, 18400);% 80 * 230
+    OISST = zeros(file_num, 20800);% 80 * 260
 
 
     for i = 1:file_num
@@ -31,9 +31,9 @@ function OISST_Preprocessing()
         grid_SST = flipud(grid_SST');
 
         % x ~ 90 - 50(50°N) : 90 + 29(30°S)
-        % y ~ 31(30°E)      : (180 - 30) + (180 - 70) (70°W)
-        grid_SST = grid_SST(40:119, 31:260);
-        OISST(i, :) = reshape(grid_SST, 1, 18400);
+        % y ~ 31(30°E)      : 180 + (180 - 70) (70°W)
+        grid_SST = grid_SST(40:119, 31:290);
+        OISST(i, :) = reshape(grid_SST, 1, 20800);
     end
 
     dlmwrite('data/OISST_19811101-20161116.dat', OISST, 'delimiter', ' ');
