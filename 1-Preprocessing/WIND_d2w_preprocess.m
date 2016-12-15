@@ -1,6 +1,7 @@
 function WIND_d2w_preprocess()
     clear all;
     clc;
+    addpath(genpath(pwd));
     file_type = 'nc';
     file_path = 'E:/Datasets/WIND/WIND_daily';
     
