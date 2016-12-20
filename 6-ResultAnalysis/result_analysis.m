@@ -22,5 +22,15 @@ function result_analysis()
     % 全集MSE 随时间 的变化
     plot(result_time(:, 7))
 
-    % 九个区域 随时间 的变化
+    % 测试集MSE 随时间 的变化
+    plot(result_time(:, 6))
+
+    % 全集相关系数 的变化
+    plot(result_time(:, 11))
+
+    % 测试集相关系数 的变化
+    plot(result_time(:, 10))
+
+    % 九个区域 的变化
     plot(mean(result_time(:, 12:20)))
+    
